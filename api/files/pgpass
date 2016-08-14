@@ -1,0 +1,2 @@
+# hostname:port:database:username:password
+postgresdb.dev:5432:sacsos:sacsos:password1
