@@ -8,7 +8,7 @@ To use:
 
  * Clone this repo
  * docker-compose build
- * docker-compose run bash -l -c "bin/setup"
+ * docker-compose run api bash -l -c "bin/setup"
  * docker-compose up
 
 Then view the site on localhost:3001/
