@@ -1,17 +1,28 @@
-api:
-  build: api/
-  environment:
-    - PGHOST=postgresdb.dev
-    - PGPASSWORD=password1
-    - PGUSER=sacsos
-  ports:
+version: '2'
+services:
+  api:
+    build: api/
+    environment:
+      - VIRTUAL_HOST=ohana-api.dev
+      - PGHOST=postgresdb.dev
+      - PGPASSWORD=password1
+      - PGUSER=sacsos
+    ports:
     - "3001:3000"
-  # volumes:
-  #   - ../ohana-api:/home/sacsos/api
-  links:
-    - "pg:postgresdb.dev"
-pg:
-  image: postgres
-  environment:
-    - POSTGRES_PASSWORD=password1
-    - POSTGRES_USER=sacsos
+    # volumes:
+    #   - ../ohana-api:/home/sacsos/api
+    links:
+      - "pg:postgresdb.dev"
+  web:
+    build: web/
+    ports:
+      - "3000:3000"
+    environment:
+      - VIRTUAL_HOST=web.local
+    links:
+      - "api:ohana-api.dev"
+  pg:
+    image: postgres
+    environment:
+      - POSTGRES_PASSWORD=password1
+      - POSTGRES_USER=sacsos

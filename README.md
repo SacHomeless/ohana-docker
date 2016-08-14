@@ -1,7 +1,5 @@
 Docker files to run SacSOS for development.
 
-Currently very basic. It runs ohana-api, but not yet ohana-client.
-
 Prerequisites: Docker. Docker now runs on Windows and Mac, though, as well as Linux.
 
 To use:
@@ -11,4 +9,4 @@ To use:
  * docker-compose run api bash -l -c "bin/setup"
  * docker-compose up
 
-Then view the site on localhost:3001/
+Then view the site on lvh.me:3001/ for the api, and lvh.me:3000 for the web interface.
