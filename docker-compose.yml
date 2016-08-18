@@ -26,3 +26,5 @@ services:
     environment:
       - POSTGRES_PASSWORD=password1
       - POSTGRES_USER=sacsos
+    # volumes:
+    #   - /home/jeff/projects/ohana-data/backups:/backups
