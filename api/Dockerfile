@@ -41,6 +41,6 @@ RUN /bin/bash -lc "chown sacsos:sacsos /home/sacsos/.pgpass"
 USER sacsos
 RUN /bin/bash -l -c "chmod 0600 /home/sacsos/.pgpass"
 
-EXPOSE 3000
+EXPOSE 3001
 
-CMD /bin/bash -l -c "rm -f tmp/pids/server.pid && rails s -b 0.0.0.0"
+CMD /bin/bash -l -c "rm -f tmp/pids/server.pid && rails s -b 0.0.0.0 -p 3001"

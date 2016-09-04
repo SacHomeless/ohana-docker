@@ -8,19 +8,21 @@ services:
       - PGPASSWORD=password1
       - PGUSER=sacsos
     ports:
-    - "8080:3000"
-    # volumes:
-    #   - ../ohana-api:/home/sacsos/api
+    - "3001:3001"
+    volumes:
+      - ./api/files/application.yml:/home/sacsos/api/config/application.yml
     links:
       - "pg:postgresdb.dev"
   web:
     build: web/
     ports:
-      - "3001:3000"
+      - "3000:3000"
     environment:
       - VIRTUAL_HOST=web.local
     links:
-      - "api:ohana-api.dev"
+      - "api:api.lvh.me"
+    volumes:
+      - ./web/files/application.yml:/home/sacsos/api/config/application.yml
   pg:
     image: postgres
     environment:

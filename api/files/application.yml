@@ -166,7 +166,7 @@
 #
 ###########################
 development:
-  API_SUBDOMAIN:
+  API_SUBDOMAIN: api
   API_PATH: api
   ADMIN_SUBDOMAIN:
   ADMIN_PATH: admin
