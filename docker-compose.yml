@@ -1,7 +1,7 @@
 version: '2'
 services:
   api:
-    build: api/
+    build: ../ohana-api
     environment:
       - VIRTUAL_HOST=ohana-api.dev
       - PGHOST=postgresdb.dev
@@ -10,23 +10,27 @@ services:
     ports:
     - "3001:3001"
     volumes:
-      - ./api/files/application.yml:/home/sacsos/api/config/application.yml
+      - /home/jeff/projects/ruby/sacsos/ohana-api:/home/sacsos/api:z
+      - ./api/files/application.yml:/home/sacsos/api/config/application.yml:z
+      - ./api/files/database.yml:/home/sacsos/api/config/database.yml:z
     links:
       - "pg:postgresdb.dev"
+        # command: "/bin/bash -lc 'while true; do sleep 1; done'"
   web:
-    build: web/
+    build: ../ohana-web-search
     ports:
       - "3000:3000"
     environment:
       - VIRTUAL_HOST=web.local
     links:
-      - "api:api.lvh.me"
+     - "api:api.lvh.me"
+    depends_on:
+      - api
+      - pg
     volumes:
-      - ./web/files/application.yml:/home/sacsos/api/config/application.yml
+      - ./web/files/application.yml:/home/sacsos/web/config/application.yml:z
   pg:
     image: postgres
     environment:
       - POSTGRES_PASSWORD=password1
       - POSTGRES_USER=sacsos
-    # volumes:
-    #   - /home/jeff/projects/ohana-data/backups:/backups

@@ -1,7 +1,7 @@
 default: &default
   adapter: postgresql
   encoding: utf8
-  # host: localhost
+  host: <%= ENV['PGHOST'] %>
   port: 5432
   pool: <%= ENV['DB_POOL'] || ENV['MAX_THREADS'] || 5 %>
   url: <%= ENV['DATABASE_URL'] %>
