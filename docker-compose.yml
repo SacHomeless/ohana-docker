@@ -8,14 +8,14 @@ services:
       - PGPASSWORD=password1
       - PGUSER=sacsos
     ports:
-    - "3001:3001"
+    - "3001:3000"
     volumes:
       - /home/jeff/projects/ruby/sacsos/ohana-api:/home/sacsos/api:z
       - ./api/files/application.yml:/home/sacsos/api/config/application.yml:z
       - ./api/files/database.yml:/home/sacsos/api/config/database.yml:z
     links:
       - "pg:postgresdb.dev"
-        # command: "/bin/bash -lc 'while true; do sleep 1; done'"
+        #command: "/bin/bash -lc 'while true; do sleep 1; done'"
   web:
     build: ../ohana-web-search
     ports:
